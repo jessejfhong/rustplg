@@ -1,0 +1,14 @@
+application:
+  port: 8080
+
+database:
+  port: 5433
+  require_ssl: true
+  database_name: "newsletter"
+
+email_client:
+  region: "ap-southeast-2"
+  endpoint_url: "email.ap-southeast-2.amazonaws.com"
+  sender_email: "testing@gmail.com"
+  timeout_milliseconds: 10000
+

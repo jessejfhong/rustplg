@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+members = [
+    "chp01",
+    "chp02",
+    "chp03"
+]
+
+[workspace.package]
+edition = "2021"

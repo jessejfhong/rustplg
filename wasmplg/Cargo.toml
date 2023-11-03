@@ -1,0 +1,13 @@
+[package]
+name = "wasmplg"
+version = "0.1.0"
+edition = "2021"
+
+### build the lib for web
+## cargo build --lib --target wasm32-unknown-unknown
+[lib]
+name = "wasmplg"
+crate-type = ["cdylib", "rlib"]
+
+
+[dependencies]

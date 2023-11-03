@@ -1,0 +1,100 @@
+[package]
+name = "zero2prod"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+
+[dependencies]
+# web app framework
+actix-web = "4"
+
+# async runtime
+tokio = { version = "1", features = ["full"] }
+
+# handle serialization
+serde = { version = "1", features = ["derive"] }
+serde-aux = "3"
+
+# reading config files
+config = "0.11"
+
+# handling date and time
+chrono = "0.4"
+
+# make sure some code can only be run once
+once_cell = "1"
+
+# protect data from accidently log to log file, etc.
+secrecy = { version = "0.8", features = ["serde"] }
+
+# logging crates
+tracing = { version = "0.1", features = ["log"] }
+tracing-subscriber = { version = "0.3", features = ["registry", "env-filter"] }
+tracing-bunyan-formatter = "0.3"
+tracing-log = "0.1"
+tracing-actix-web = "0.5"
+
+unicode-segmentation = "1"
+claim = "0.5"
+validator = "0.14"
+
+# AWS simple email service for sending email
+aws-types = "0.56.1"
+aws-config = "0.56.1"
+aws-sdk-sesv2 = "0.30.0"
+
+rand = { version = "0.8", features = ["std_rng"] }
+
+# report error
+thiserror = "1"
+anyhow = "1"
+
+base64 = "0.13"
+
+sha3 = "0.9"
+argon2 = { version = "0.5", features = ["std"] }
+
+# Http client for making REST api call
+[dependencies.reqwest]
+version = "0.11"
+default-features = false
+features = [
+    "json",
+    "rustls-tls"
+]
+
+# database access
+[dependencies.sqlx]
+version = "0.7"
+default-features = false
+features = [
+    "runtime-tokio",
+    "tls-native-tls",
+    "macros",
+    "postgres",
+    "uuid",
+    "chrono",
+    "migrate"
+]
+
+# Generate uuid
+[dependencies.uuid]
+version = "1.4.0"
+features = [
+    "v4",
+    "fast-rng",
+    "macro-diagnostics",
+]
+
+
+
+[dev-dependencies]
+# property testing
+fake = "~2.3"
+quickcheck = "0.9"
+quickcheck_macros = "0.9"
+tokio = { version = "1", features = ["rt", "macros"] }
+wiremock = "0.5"
+serde_json = "1"
+linkify = "0.8"

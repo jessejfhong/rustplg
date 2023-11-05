@@ -3,7 +3,12 @@
 	[
 		{
 			"path": ".",
-			"folder_exclude_patterns": ["target"],
+			"folder_exclude_patterns": [
+				"target",
+				"dist",
+				"data",
+				"node_modules"
+			],
 			"file_exclude_patterns": [
 				"Cargo.lock",
 				"*.sublime-project",

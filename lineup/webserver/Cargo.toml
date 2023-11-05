@@ -1,0 +1,55 @@
+[package]
+name = "lineup"
+version = "0.1.0"
+edition = "2021"
+authors = ["looper <looper@loopercorp.com>"]
+
+
+[dependencies]
+actix-web = "4"
+config = { version = "0.13", features = ["toml"] }
+futures-util = "0.3.28"
+serde = { version = "1", features = ["derive"] }
+serde-aux = "4"
+tokio = { version = "1", features = ["full"] }
+
+tracing = "0.1"
+tracing-actix-web = "0.7"
+
+[dependencies.uuid]
+version = "1.4.0"
+features = [
+    "v4",
+    "fast-rng",
+    "macro-diagnostics",
+]
+
+[dependencies.sqlx]
+version = "0.7"
+default-features = false
+features = [
+    "runtime-tokio",
+    "tls-native-tls",
+    "macros",
+    "postgres",
+    "uuid",
+    "chrono",
+    "migrate"
+]
+
+[dev-dependencies]
+fake = "2.3"
+quickcheck = "0.9"
+quickcheck_macros = "0.9"
+tokio = { version = "1", features = ["rt", "macros"] }
+wiremock = "0.5"
+serde_json = "1"
+linkify = "0.8"
+
+[dev-dependencies.reqwest]
+version = "0.11"
+default-features = false
+features = [
+    "json",
+    "rustls-tls"
+]

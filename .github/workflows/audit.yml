@@ -1,9 +1,13 @@
-name: Fly Deploy
+name: Security Audit
+
+run-name: ${{ github.actor }} is performing security audit.
 
 # on:
 #   push:
-#     branches:
-#       - main
+#     paths:
+#       - '**/Cargo.toml'
+#   schedule:
+#     - cron: '0 0 * * *'
 
 on:
   workflow_dispatch:
@@ -17,14 +21,12 @@ on:
         - warning
         - debug
 
-
 jobs:
-  delpoy:
-    name: Deploy app
+  audit:
+    name: audit check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      - uses: actions-rs/audit-check@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
